@@ -276,6 +276,7 @@ class SimpleTrainer(TrainerBase):
             loss_dict = {"total_loss": loss_dict}
         else:
             losses = sum(loss_dict.values())
+        ld.append(losses)
 
         """
         If you need to accumulate gradients or do something similar, you can
