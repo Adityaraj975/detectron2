@@ -249,7 +249,7 @@ class SimpleTrainer(TrainerBase):
         like evaluation during training, you can overwrite its train() method.
         """
         model.train()
-
+        self.losses_list = []
         self.model = model
         self.data_loader = data_loader
         self._data_loader_iter = iter(data_loader)
@@ -276,7 +276,7 @@ class SimpleTrainer(TrainerBase):
             loss_dict = {"total_loss": loss_dict}
         else:
             losses = sum(loss_dict.values())
-        global ld = losses
+        self.losses_list.append(losses)
 
         """
         If you need to accumulate gradients or do something similar, you can
