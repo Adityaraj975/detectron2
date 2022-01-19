@@ -140,7 +140,7 @@ class TrainerBase:
 
         self.iter = self.start_iter = start_iter
         self.max_iter = max_iter
-
+        self.stop = False
         with EventStorage(start_iter) as self.storage:
             try:
                 self.before_train()
@@ -148,6 +148,8 @@ class TrainerBase:
                     self.before_step()
                     self.run_step()
                     self.after_step()
+                    if(self.stop):
+                        break
                 # self.iter == max_iter can be used by `after_train` to
                 # tell whether the training successfully finished or failed
                 # due to exceptions.
