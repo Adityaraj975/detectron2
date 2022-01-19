@@ -149,6 +149,7 @@ class TrainerBase:
                     self.run_step()
                     self.after_step()
                     if(self.stop):
+                        self.iter = max_iter-1 
                         break
                 # self.iter == max_iter can be used by `after_train` to
                 # tell whether the training successfully finished or failed
