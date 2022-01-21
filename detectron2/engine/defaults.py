@@ -616,7 +616,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                     continue
             results_i = inference_on_dataset(model, data_loader, evaluator)
             results[dataset_name] = results_i
-            if comm.is_main_process() or True:
+            if comm.is_main_process():
                 assert isinstance(
                     results_i, dict
                 ), "Evaluator must return a dict on the main process. Got {} instead.".format(
